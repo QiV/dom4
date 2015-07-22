@@ -92,6 +92,7 @@
     },
     DocumentFragment = window.DocumentFragment,
     ElementPrototype = (window.Element || window.Node || window.HTMLElement).prototype,
+    NodePrototype = window.Node.prototype,
     ShadowRoot = window.ShadowRoot,
     SVGElement = window.SVGElement,
     // normalizes multiple ids as CSS query
@@ -221,9 +222,7 @@
     i = properties.length; i; i -= 2
   ) {
     property = properties[i - 2];
-    if (!(property in ElementPrototype)) {
-      ElementPrototype[property] = properties[i - 1];
-    }
+    NodePrototype[property] = properties[i - 1];
   }
 
   // bring query and queryAll to the document too
